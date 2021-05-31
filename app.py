@@ -15,7 +15,7 @@ CORS(app)
 db = SQLAlchemy(app)
 
 class Sum(db.Model):
-    __tablename__ = 'Numbers'
+    __tablename__ = 'sum'
 
     Number1 = db.Column(db.Integer, primary_key=True)
     Number2 = db.Column(db.Integer, primary_key=True)
