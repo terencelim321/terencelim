@@ -27,10 +27,11 @@ class Sum(db.Model):
         self.Number1 = Number1
         self.Number2 = Number2
 
+    #def json(self):
+        #return {"AbandonID": self.AbandonID, "FirstName": self.FirstName, "LastName": self.LastName, "AbandonEmail": self.AbandonEmail, "TeleID": self.TeleID}
 @app.route('/')
 def main():
     return render_template('login.html')
-
 
 @app.route('/login',methods = ['POST', 'GET'])
 def login():
