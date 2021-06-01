@@ -19,16 +19,13 @@ class Sum(db.Model):
 
     Number1 = db.Column(db.Integer, primary_key=True)
     Number2 = db.Column(db.Integer, primary_key=True)
-    #LastName = db.Column(db.String(2000), nullable=False)
-    #AbandonEmail = db.Column(db.String(2000), nullable=False)
-    #TeleID = db.Column(db.String(2000), nullable=False)
+    
 
     def __init__(self, Number1, Number2):
         self.Number1 = Number1
         self.Number2 = Number2
 
-    #def json(self):
-        #return {"AbandonID": self.AbandonID, "FirstName": self.FirstName, "LastName": self.LastName, "AbandonEmail": self.AbandonEmail, "TeleID": self.TeleID}
+    
 @app.route('/')
 def main():
     return render_template('login.html')
