@@ -47,7 +47,7 @@ def main():
     text_2 = video_text.query.filter_by(id=2).first()
     
 
-    return arr_of_ids , text_1 , text_2
+    return text_1
     #return render_template('login.html')
     #https://sumtestterence.herokuapp.com/?seg_ids=1,2
     
