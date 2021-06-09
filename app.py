@@ -42,9 +42,16 @@ def main():
     else:
       arr_of_ids = request.args.get('seg_ids')
       
-    return arr_of_ids
+
+    text_1 = video_text.query.filter_by(id=1).first()
+    text_2 = video_text.query.filter_by(id=2).first()
+    print(text_1)
+    print(text_2)
+
+    return arr_of_ids 
     #return render_template('login.html')
     #https://sumtestterence.herokuapp.com/?seg_ids=1,2
+    
 
 @app.route('/login',methods = ['POST', 'GET'])
 def login():
