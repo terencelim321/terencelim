@@ -20,7 +20,7 @@ def main():
         db.session.add(data)
         db.session.commit()
     return "hello"
-    #return render_template('login.html')
+    #return render_template('login.html')e
 
 @app.route('/login',methods = ['POST', 'GET'])
 def login():
