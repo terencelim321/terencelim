@@ -19,6 +19,7 @@ def main():
         data = video_text(id, video_id,segment_number,full_text,starttime,endtime)
         db.session.add(data)
         db.session.commit()
+    return "hello"
     #return render_template('login.html')
 
 @app.route('/login',methods = ['POST', 'GET'])
