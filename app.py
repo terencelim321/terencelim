@@ -14,21 +14,39 @@ CORS(app)
 
 db = SQLAlchemy(app)
 
-class Sum(db.Model):
-    __tablename__ = 'sum'
+class video_text(db.Model):
+    __tablename__ = 'video_text'
 
-    Number1 = db.Column(db.Integer, primary_key=True)
-    Number2 = db.Column(db.Integer, primary_key=True)
-    
+    id = db.Column(db.Integer, primary_key=True)
+    video_id = db.Column(db.Integer, nullable=False)
+    segment_number = db.Column(db.Integer, nullable=False)
+    full_text = db.Column(db.String(2000), nullable=False)
+    starttime = db.Column(db.Time , nullable=False)
+    endtime = db.Column(db.Time , nullable=False)
 
-    def __init__(self, Number1, Number2):
-        self.Number1 = Number1
-        self.Number2 = Number2
+    def __init__(self, id, video_id, segment_number, full_text, starttime, endtime):
+        self.id = id
+        self.video_id= video_id
+        self.segment_number = segment_number
+        self.full_text = full_text
+        self.starttime = starttime
+        self.endtime = endtime
 
     
 @app.route('/')
 def main():
     #return render_template('login.html')
+    id = 1
+    video_id = 1
+    segment_number = 1
+    full_text = 'hello'
+    starttime="00:00:00"
+    endtime = "00:00:59"
+    if db.session.query(video_text).filter(video_text.id == id).count() == 0:
+        data = video_text(id, video_id,segment_number,full_text,starttime,endtime)
+        db.session.add(data)
+        db.session.commit()
+        
     return "hello"
 
 @app.route('/login',methods = ['POST', 'GET'])
@@ -53,3 +71,5 @@ def login():
 
 if __name__ == '__main__':
    app.run(debug = True)
+
+
