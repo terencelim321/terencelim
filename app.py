@@ -3,19 +3,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 import os
 
-from os import path
-from PIL import Image
-
-
-from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
-import matplotlib.pyplot as plt
-import mysql.connector
-from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize
-from nltk.probability import FreqDist
-import json
-
-
 
 app = Flask(__name__)
 #dev database
@@ -47,7 +34,7 @@ class video_text(db.Model):
         self.endtime = endtime
 
     
-@app.route('/',methods = ['POST', 'GET'])
+@app.route('/')
 def main():
 
     return ('hello')
