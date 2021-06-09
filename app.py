@@ -50,20 +50,20 @@ class video_text(db.Model):
 @app.route('/',methods = ['POST', 'GET'])
 def main():
     #from nltk.corpus import stopwords
-    string_of_ids = ''
-    if request.method == 'POST':
-      string_of_ids = request.form['seg_ids']
+    #string_of_ids = ''
+    #if request.method == 'POST':
+      #string_of_ids = request.form['seg_ids']
       
-    else:
-      string_of_ids = request.args.get('seg_ids')
+    #else:
+      #string_of_ids = request.args.get('seg_ids')
 
-    string_of_ids = string_of_ids.replace(',', '')
+    #string_of_ids = string_of_ids.replace(',', '')
     
-    all_text = ''
-    for i in string_of_ids:
-        text = video_text.query.filter_by(id=float(i)).first()
-        text = text.full_text
-        all_text += ' ' + text
+    #all_text = ''
+    #for i in string_of_ids:
+        #text = video_text.query.filter_by(id=float(i)).first()
+        #text = text.full_text
+        #all_text += ' ' + text
 
 
     #stopwords = set(stopwords.words('english'))
@@ -105,7 +105,7 @@ def main():
     #plt.imshow(wordcloud, interpolation="bilinear")
     #plt.axis("off")
     #plt.show()
-    return str(all_text)
+    return ('Hello')
     #return arr_of_ids
     #return render_template('login.html')
     #https://sumtestterence.herokuapp.com/?seg_ids=1,2
