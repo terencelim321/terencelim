@@ -35,15 +35,15 @@ class video_text(db.Model):
     
 @app.route('/', methods=['GET', 'POST'])
 def main():
-    if request.method == 'POST':
-      arr_ids = request.form['seg_ids']
+    #if request.method == 'POST':
+      #arr_ids = request.form['seg_ids']
 
-    else:
+    #else:
 
-      arr_ids = request.args.get('seg_ids')
+      #arr_ids = request.args.get('seg_ids')
 
-    for i in arr_ids:
-        print (i)
+    #for i in arr_ids:
+        #print (i)
       
     id = 1
     video_id = 1
