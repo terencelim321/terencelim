@@ -3,9 +3,23 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 import os
 
+from os import path
+from PIL import Image
+
+
+from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
+import matplotlib.pyplot as plt
+import mysql.connector
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+from nltk.probability import FreqDist
+import json
+
+
+
 app = Flask(__name__)
 #dev database
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root@localhost:3306/postdata'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root@localhost:3306/bigdatavideo'
 #app.config['SQLALCHEMY_DATABASE_URI'] = environ.get("dbURL")
 #production database
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
@@ -35,21 +49,67 @@ class video_text(db.Model):
     
 @app.route('/',methods = ['POST', 'GET'])
 def main():
-    arr_of_ids = []
+    from nltk.corpus import stopwords
+    string_of_ids = ''
     if request.method == 'POST':
-      arr_of_ids = request.form['seg_ids']
+      string_of_ids = request.form['seg_ids']
       
     else:
-      arr_of_ids = request.args.get('seg_ids')
-      
+      string_of_ids = request.args.get('seg_ids')
 
-    text_1 = video_text.query.filter_by(id=1).first()
-    text_2 = video_text.query.filter_by(id=2).first()
+    string_of_ids = string_of_ids.replace(',', '')
     
+    all_text = ''
+    for i in string_of_ids:
+        text = video_text.query.filter_by(id=float(i)).first()
+        text = text.full_text
+        all_text += ' ' + text
 
-    return text_1
+
+    stopwords = set(stopwords.words('english'))
+    # Create stopword list:
+    #sets all stop words
+    stopwords.add('(')
+    stopwords.add(')')
+    stopwords.add('[')
+    stopwords.add(']')
+    stopwords.add("``")
+    stopwords.add("''")
+    stopwords.add(",")
+    stopwords.add("s")
+    stopwords.add("'")
+
+    tokenized_word = word_tokenize(all_text)
+    #print(tokenized_word)
+
+    #checks the text and filters out all the stop words inside
+    filtered_sent=[]
+    for w in tokenized_word:
+        if w not in stopwords:
+            filtered_sent.append(w)
+                
+    fdist = FreqDist(filtered_sent)
+    #top10
+    #print(fdist.most_common(10))
+    # Generate a word cloud image
+    wordcloud = WordCloud(stopwords=stopwords, background_color="white").generate(text)
+
+
+    # Create and generate a word cloud image:
+    #wordcloud = WordCloud().generate(text)
+
+    # lower max_font_size, change the maximum number of word and lighten the background:
+    wordcloud = WordCloud(max_font_size=50, max_words=10, background_color="white").generate(text)
+    plt.figure()
+    #This is to make the displayed image appear more smoothly.
+    plt.imshow(wordcloud, interpolation="bilinear")
+    plt.axis("off")
+    #plt.show()
+    return str(fdist.most_common(10))
+    #return arr_of_ids
     #return render_template('login.html')
     #https://sumtestterence.herokuapp.com/?seg_ids=1,2
+    #http://127.0.0.1:5000/?seg_ids=1,2
     
 
 @app.route('/login',methods = ['POST', 'GET'])
