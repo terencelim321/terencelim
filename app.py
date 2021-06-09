@@ -32,8 +32,8 @@ class video_text(db.Model):
         self.starttime = starttime
         self.endtime = endtime
 
-    
-@app.route('/', methods=['GET', 'POST'])
+    #, methods=['GET', 'POST']
+@app.route('/')
 def main():
     #if request.method == 'POST':
       #arr_ids = request.form['seg_ids']
@@ -71,10 +71,10 @@ def login():
       Number2 = request.args.get('num2')
       sum = int(Number1) + int(Number2)
 
-      if db.session.query(Sum).filter(Sum.Number1 == Number1).count() == 0:
-          data = Sum(Number1, Number2)
-          db.session.add(data)
-          db.session.commit()
+      #if db.session.query(Sum).filter(Sum.Number1 == Number1).count() == 0:
+          #data = Sum(Number1, Number2)
+          #db.session.add(data)
+          #db.session.commit()
 
       return (str(sum) + ' is the total sum of these two numbers')
 
