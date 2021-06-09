@@ -3,17 +3,17 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 import os
 
-from os import path
-from PIL import Image
+#from os import path
+#from PIL import Image
 
 
-from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
-import matplotlib.pyplot as plt
-import mysql.connector
-from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize
-from nltk.probability import FreqDist
-import json
+#from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
+#import matplotlib.pyplot as plt
+#import mysql.connector
+#from nltk.corpus import stopwords
+#from nltk.tokenize import word_tokenize
+#from nltk.probability import FreqDist
+#import json
 
 
 
