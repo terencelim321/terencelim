@@ -3,26 +3,26 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 import os
 
-#from os import path
-#from PIL import Image
+from os import path
+from PIL import Image
 
 
-#from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
-#import matplotlib.pyplot as plt
-#import mysql.connector
-#from nltk.corpus import stopwords
-#from nltk.tokenize import word_tokenize
-#from nltk.probability import FreqDist
-
+from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
+import matplotlib.pyplot as plt
+import mysql.connector
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+from nltk.probability import FreqDist
+import json
 
 
 
 app = Flask(__name__)
 #dev database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root@localhost:3306/bigdatavideo'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root@localhost:3306/bigdatavideo'
 #app.config['SQLALCHEMY_DATABASE_URI'] = environ.get("dbURL")
 #production database
-#app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 CORS(app)
 
