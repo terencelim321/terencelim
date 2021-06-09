@@ -49,7 +49,7 @@ class video_text(db.Model):
     
 @app.route('/',methods = ['POST', 'GET'])
 def main():
-    from nltk.corpus import stopwords
+    #from nltk.corpus import stopwords
     string_of_ids = ''
     if request.method == 'POST':
       string_of_ids = request.form['seg_ids']
@@ -66,46 +66,46 @@ def main():
         all_text += ' ' + text
 
 
-    stopwords = set(stopwords.words('english'))
+    #stopwords = set(stopwords.words('english'))
     # Create stopword list:
     #sets all stop words
-    stopwords.add('(')
-    stopwords.add(')')
-    stopwords.add('[')
-    stopwords.add(']')
-    stopwords.add("``")
-    stopwords.add("''")
-    stopwords.add(",")
-    stopwords.add("s")
-    stopwords.add("'")
+    #stopwords.add('(')
+    #stopwords.add(')')
+    #stopwords.add('[')
+    #stopwords.add(']')
+    #stopwords.add("``")
+    #stopwords.add("''")
+    #stopwords.add(",")
+    #stopwords.add("s")
+    #stopwords.add("'")
 
-    tokenized_word = word_tokenize(all_text)
+    #tokenized_word = word_tokenize(all_text)
     #print(tokenized_word)
 
     #checks the text and filters out all the stop words inside
-    filtered_sent=[]
-    for w in tokenized_word:
-        if w not in stopwords:
-            filtered_sent.append(w)
+    #filtered_sent=[]
+    #for w in tokenized_word:
+        #if w not in stopwords:
+        #    filtered_sent.append(w)
                 
-    fdist = FreqDist(filtered_sent)
+    #fdist = FreqDist(filtered_sent)
     #top10
     #print(fdist.most_common(10))
     # Generate a word cloud image
-    wordcloud = WordCloud(stopwords=stopwords, background_color="white").generate(text)
+    #wordcloud = WordCloud(stopwords=stopwords, background_color="white").generate(text)
 
 
     # Create and generate a word cloud image:
     #wordcloud = WordCloud().generate(text)
 
     # lower max_font_size, change the maximum number of word and lighten the background:
-    wordcloud = WordCloud(max_font_size=50, max_words=10, background_color="white").generate(text)
-    plt.figure()
+    #wordcloud = WordCloud(max_font_size=50, max_words=10, background_color="white").generate(text)
+    #plt.figure()
     #This is to make the displayed image appear more smoothly.
-    plt.imshow(wordcloud, interpolation="bilinear")
-    plt.axis("off")
+    #plt.imshow(wordcloud, interpolation="bilinear")
+    #plt.axis("off")
     #plt.show()
-    return str(fdist.most_common(10))
+    return str(all_text)
     #return arr_of_ids
     #return render_template('login.html')
     #https://sumtestterence.herokuapp.com/?seg_ids=1,2
