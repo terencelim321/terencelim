@@ -35,18 +35,8 @@ class video_text(db.Model):
     
 @app.route('/')
 def main():
-    #return render_template('login.html')
-    id = 1
-    video_id = 1
-    segment_number = 1
-    full_text = 'hello'
-    starttime="00:00:00"
-    endtime = "00:00:59"
-    if db.session.query(video_text).filter(video_text.id == id).count() == 0:
-        data = video_text(id, video_id,segment_number,full_text,starttime,endtime)
-        db.session.add(data)
-        db.session.commit()
-    return "hello"
+    return render_template('login.html')
+    
 
 @app.route('/login',methods = ['POST', 'GET'])
 def login():
