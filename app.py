@@ -32,30 +32,21 @@ class video_text(db.Model):
         self.starttime = starttime
         self.endtime = endtime
 
-    #, methods=['GET', 'POST']
+    
 @app.route('/')
 def main():
-    #if request.method == 'POST':
-      #arr_ids = request.form['seg_ids']
-
-    #else:
-
-      #arr_ids = request.args.get('seg_ids')
-
-    #for i in arr_ids:
-        #print (i)
-      
+    #return render_template('login.html')
     id = 1
     video_id = 1
     segment_number = 1
-    full_text = 'safety I keep a truck fortunately you know these accidents don\'t happen every day but they do happen and a lot of times when investigation is done what the main route seems to be that you know everybody makes somebody'
+    full_text = 'safety I keep a truck fortunately you know these accidents dont happen every day but they do happen and a lot of times when investigation is done what the main route seems to be that you know everybody makes somebodys taking care of'
     starttime="00:00:00"
     endtime = "00:00:59"
-    #if db.session.query(video_text).filter(video_text.id == id).count() == 0:
-    data = video_text(id, video_id,segment_number,full_text,starttime,endtime)
-    db.session.add(data)
-    db.session.commit()
-
+    if db.session.query(video_text).filter(video_text.id == id).count() == 0:
+        data = video_text(id, video_id,segment_number,full_text,starttime,endtime)
+        db.session.add(data)
+        db.session.commit()
+        
     return "hello"
 
 @app.route('/login',methods = ['POST', 'GET'])
@@ -71,10 +62,10 @@ def login():
       Number2 = request.args.get('num2')
       sum = int(Number1) + int(Number2)
 
-      #if db.session.query(Sum).filter(Sum.Number1 == Number1).count() == 0:
-          #data = Sum(Number1, Number2)
-          #db.session.add(data)
-          #db.session.commit()
+      if db.session.query(Sum).filter(Sum.Number1 == Number1).count() == 0:
+          data = Sum(Number1, Number2)
+          db.session.add(data)
+          db.session.commit()
 
       return (str(sum) + ' is the total sum of these two numbers')
 
