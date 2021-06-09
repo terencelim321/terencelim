@@ -1,11 +1,11 @@
-
+from flask import jsonify, abort, request, make_response
 #production database
 #app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 #app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 #CORS(app)
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from app_models import video_text
+#from app_models import video_text
 import os
 
 
@@ -66,10 +66,10 @@ def login():
       Number2 = request.args.get('num2')
       sum = int(Number1) + int(Number2)
 
-      if db.session.query(numbers).filter(numbers.Number1 == Number1).count() == 0:
-          data = numbers(Number1, Number2)
-          db.session.add(data)
-          db.session.commit()
+      #if db.session.query(numbers).filter(numbers.Number1 == Number1).count() == 0:
+          #data = numbers(Number1, Number2)
+          #db.session.add(data)
+          #db.session.commit()
 
       return (str(sum) + ' is the total sum of these two numbers')
 
