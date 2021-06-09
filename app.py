@@ -19,10 +19,10 @@ import json
 
 app = Flask(__name__)
 #dev database
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root@localhost:3306/bigdatavideo'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root@localhost:3306/bigdatavideo'
 #app.config['SQLALCHEMY_DATABASE_URI'] = environ.get("dbURL")
 #production database
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+#app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 CORS(app)
 
@@ -49,6 +49,8 @@ class video_text(db.Model):
     
 @app.route('/',methods = ['POST', 'GET'])
 def main():
+
+    return ('hello')
     #from nltk.corpus import stopwords
     #string_of_ids = ''
     #if request.method == 'POST':
@@ -86,7 +88,7 @@ def main():
     #filtered_sent=[]
     #for w in tokenized_word:
         #if w not in stopwords:
-        #    filtered_sent.append(w)
+            #filtered_sent.append(w)
                 
     #fdist = FreqDist(filtered_sent)
     #top10
@@ -105,7 +107,7 @@ def main():
     #plt.imshow(wordcloud, interpolation="bilinear")
     #plt.axis("off")
     #plt.show()
-    return ('Hello')
+    #return filtered_sent
     #return arr_of_ids
     #return render_template('login.html')
     #https://sumtestterence.herokuapp.com/?seg_ids=1,2
