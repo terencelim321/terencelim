@@ -44,7 +44,7 @@ def main():
       
     return arr_of_ids
     #return render_template('login.html')
-    
+    #https://sumtestterence.herokuapp.com/?seg_ids=1,2
 
 @app.route('/login',methods = ['POST', 'GET'])
 def login():
