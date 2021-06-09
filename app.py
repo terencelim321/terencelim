@@ -33,9 +33,17 @@ class video_text(db.Model):
         self.endtime = endtime
 
     
-@app.route('/')
+@app.route('/',methods = ['POST', 'GET'])
 def main():
-    return render_template('login.html')
+    arr_of_ids = []
+    if request.method == 'POST':
+      arr_of_ids = request.form['seg_ids']
+      
+    else:
+      arr_of_ids = request.args.get('seg_ids')
+      
+    return arr_of_ids
+    #return render_template('login.html')
     
 
 @app.route('/login',methods = ['POST', 'GET'])
