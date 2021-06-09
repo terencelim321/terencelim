@@ -33,20 +33,20 @@ class video_text(db.Model):
         self.endtime = endtime
 
     
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def main():
     #return render_template('login.html')
     id = 1
     video_id = 1
     segment_number = 1
-    full_text = 'hello'
+    full_text = 'safety I keep a truck fortunately you know these accidents don\'t happen every day but they do happen and a lot of times when investigation is done what the main route seems to be that you know everybody makes somebody'
     starttime="00:00:00"
     endtime = "00:00:59"
     if db.session.query(video_text).filter(video_text.id == id).count() == 0:
         data = video_text(id, video_id,segment_number,full_text,starttime,endtime)
         db.session.add(data)
         db.session.commit()
-        
+
     return "hello"
 
 @app.route('/login',methods = ['POST', 'GET'])
