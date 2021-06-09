@@ -28,6 +28,9 @@ class video_text(db.Model):
 
 
 
+    
+
+
 
 
     
