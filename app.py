@@ -77,21 +77,21 @@ def main():
     stopwords.add("n't")
     stopwords.add("'re")
 
-    tokenized_word = word_tokenize(str(all_text))
+    #tokenized_word = word_tokenize(str(all_text))
     #print(tokenized_word)
     
     #checks the text and filters out all the stop words inside
-    filtered_sent=[]
-    for w in tokenized_word:
-        if w not in stopwords:
-            filtered_sent.append(w)
+    #filtered_sent=[]
+    #for w in tokenized_word:
+        #if w not in stopwords:
+            #filtered_sent.append(w)
 
     
-    fdist = FreqDist(filtered_sent)
+    #fdist = FreqDist(filtered_sent)
     #top10
-    top_10 = fdist.most_common(10)
+    #top_10 = fdist.most_common(10)
 
-    return  str(top_10)
+    return  str(stopwords)
     # Generate a word cloud image
     #wordcloud = WordCloud(stopwords=stopwords, background_color="white").generate(text)
 
