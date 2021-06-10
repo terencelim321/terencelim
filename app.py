@@ -10,10 +10,10 @@ import json
 
 app = Flask(__name__)
 #dev database
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root@localhost:3306/bigdatavideo'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root@localhost:3306/bigdatavideo'
 #app.config['SQLALCHEMY_DATABASE_URI'] = environ.get("dbURL")
 #production database
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+#app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 CORS(app)
 
@@ -41,7 +41,7 @@ class video_text(db.Model):
 @app.route('/',methods = ['POST', 'GET'])
 def main():
     
-    from nltk.corpus import stopwords
+    #from nltk.corpus import stopwords
     
     
     string_of_ids = ''
@@ -51,10 +51,11 @@ def main():
     else:
       string_of_ids = request.args.get('seg_ids')
 
-    string_of_ids = string_of_ids.replace(',', '')
+    arr_of_ids = string_of_ids.split(',')
+    #string_of_ids = string_of_ids.replace(',', '')
     
     all_text = []
-    for i in string_of_ids:
+    for i in arr_of_ids:
         text = video_text.query.filter_by(id=float(i)).first()
         text = text.full_text
         all_text.append(text)
@@ -122,6 +123,10 @@ def main():
 
     freq_json = json.dumps(top_10)
     return  freq_json
+
+
+
+
     # Generate a word cloud image
     #wordcloud = WordCloud(stopwords=stopwords, background_color="white").generate(text)
 
