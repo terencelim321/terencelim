@@ -61,7 +61,7 @@ def main():
         
     all_text_json = json.dumps(all_text)
     
-    stopwords = set(stopwords.words('english'))
+    stopwords = stopwords.words('english')
     # Create stopword list:
     #sets all stop words
     #stopwords.add('(')
