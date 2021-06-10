@@ -48,11 +48,11 @@ def main():
 
     string_of_ids = string_of_ids.replace(',', '')
     
-    all_text = ''
+    all_text = []
     for i in string_of_ids:
         text = video_text.query.filter_by(id=float(i)).first()
         text = text.full_text
-        all_text += ' ' + text
+        all_text.append(text)
         
     all_text_json = json.dumps(all_text)
     return all_text_json
