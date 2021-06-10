@@ -104,5 +104,5 @@ virtualenv-clone==0.5.4
 wcwidth==0.2.5
 webencodings==0.5.1
 Werkzeug==1.0.1
-wordcloud @ file:///C:/Users/Travis/AppData/Local/Programs/Python/Python39/wordcloud-1.8.1-cp39-cp39-win_amd64.whl
+#wordcloud @ file:///C:/Users/Travis/AppData/Local/Programs/Python/Python39/wordcloud-1.8.1-cp39-cp39-win_amd64.whl
 wrapt==1.12.1
