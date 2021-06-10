@@ -59,7 +59,7 @@ def main():
         text = text.full_text
         all_text.append(text)
         
-    all_text_json = json.dumps(all_text)
+    #all_text_json = json.dumps(all_text)
     
     stopwords = ['i', 'me', 'my', 'myself', 'we', 'our', 'ours', 
     'ourselves', 'you', "you're", "you've", "you'll", "you'd", 'your', 'yours', 'yourself', 
@@ -119,7 +119,9 @@ def main():
     #top10
     top_10 = fdist.most_common(10)
 
-    return  str(top_10) 
+
+    freq_json = json.dumps(top_10)
+    return  freq_json
     # Generate a word cloud image
     #wordcloud = WordCloud(stopwords=stopwords, background_color="white").generate(text)
 
