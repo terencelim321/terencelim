@@ -2,6 +2,10 @@ from flask import Flask, request, jsonify, json, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 import os
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+from nltk.probability import FreqDist
+import json
 
 
 app = Flask(__name__)
@@ -36,7 +40,8 @@ class video_text(db.Model):
     
 @app.route('/',methods = ['POST', 'GET'])
 def main():
-
+    from nltk.corpus import stopwords
+    
     
     
     string_of_ids = ''
@@ -55,32 +60,38 @@ def main():
         all_text.append(text)
         
     all_text_json = json.dumps(all_text)
-    return all_text_json
-    #stopwords = set(stopwords.words('english'))
+    
+    stopwords = set(stopwords.words('english'))
     # Create stopword list:
     #sets all stop words
-    #stopwords.add('(')
-    #stopwords.add(')')
-    #stopwords.add('[')
-    #stopwords.add(']')
-    #stopwords.add("``")
-    #stopwords.add("''")
-    #stopwords.add(",")
-    #stopwords.add("s")
-    #stopwords.add("'")
+    stopwords.add('(')
+    stopwords.add(')')
+    stopwords.add('[')
+    stopwords.add(']')
+    stopwords.add("``")
+    stopwords.add("''")
+    stopwords.add(",")
+    stopwords.add("'s")
+    stopwords.add("'")
+    stopwords.add('""')
+    stopwords.add("n't")
+    stopwords.add("'re")
 
-    #tokenized_word = word_tokenize(all_text)
+    tokenized_word = word_tokenize(str(all_text))
     #print(tokenized_word)
-
+    
     #checks the text and filters out all the stop words inside
-    #filtered_sent=[]
-    #for w in tokenized_word:
-        #if w not in stopwords:
-            #filtered_sent.append(w)
-                
-    #fdist = FreqDist(filtered_sent)
+    filtered_sent=[]
+    for w in tokenized_word:
+        if w not in stopwords:
+            filtered_sent.append(w)
+
+    
+    fdist = FreqDist(filtered_sent)
     #top10
-    #print(fdist.most_common(10))
+    top_10 = fdist.most_common(10)
+
+    return  str(top_10)
     # Generate a word cloud image
     #wordcloud = WordCloud(stopwords=stopwords, background_color="white").generate(text)
 
