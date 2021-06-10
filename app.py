@@ -40,7 +40,7 @@ class video_text(db.Model):
     
 @app.route('/',methods = ['POST', 'GET'])
 def main():
-    #from nltk.corpus import stopwords
+    
     
     
     
@@ -77,7 +77,7 @@ def main():
     # "isn't", 'ma', 'mightn', "mightn't", 'mustn', "mustn't", 'needn', "needn't", 'shan', "shan't", 'shouldn',
     #  "shouldn't", 'wasn', "wasn't", 'weren', "weren't", 'won', "won't", 'wouldn', "wouldn't"]
     # Create stopword list:
-    stop_words=set(stopwords.words("english"))
+    stop_words=stopwords.words("english")
     #sets all stop words
     stopwords.append('(')
     stopwords.append(')')
@@ -96,17 +96,17 @@ def main():
     #print(tokenized_word)
     
     #checks the text and filters out all the stop words inside
-    #filtered_sent=[]
-    #for w in tokenized_word:
-        #if w not in stopwords:
-            #filtered_sent.append(w)
+    filtered_sent=[]
+    for w in tokenized_word:
+        if w not in stop_words:
+            filtered_sent.append(w)
 
     
     #fdist = FreqDist(filtered_sent)
     #top10
     #top_10 = fdist.most_common(10)
 
-    return  str(tokenized_word)
+    return  str(stopwords) 
     # Generate a word cloud image
     #wordcloud = WordCloud(stopwords=stopwords, background_color="white").generate(text)
 
