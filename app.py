@@ -115,11 +115,11 @@ def main():
             filtered_sent.append(w)
 
     
-    #fdist = FreqDist(filtered_sent)
+    fdist = FreqDist(filtered_sent)
     #top10
-    #top_10 = fdist.most_common(10)
+    top_10 = fdist.most_common(10)
 
-    return  str(filtered_sent) 
+    return  str(top_10) 
     # Generate a word cloud image
     #wordcloud = WordCloud(stopwords=stopwords, background_color="white").generate(text)
 
