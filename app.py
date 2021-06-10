@@ -40,7 +40,7 @@ class video_text(db.Model):
     
 @app.route('/',methods = ['POST', 'GET'])
 def main():
-    #from nltk.corpus import stopwords
+    from nltk.corpus import stopwords
     
     
     
