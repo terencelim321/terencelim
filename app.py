@@ -40,7 +40,7 @@ class video_text(db.Model):
     
 @app.route('/',methods = ['POST', 'GET'])
 def main():
-    from nltk.corpus import stopwords
+    #from nltk.corpus import stopwords
     
     
     
@@ -61,21 +61,21 @@ def main():
         
     all_text_json = json.dumps(all_text)
     
-    stopwords = set(stopwords.words('english'))
+    #stopwords = set(stopwords.words('english'))
     # Create stopword list:
     #sets all stop words
-    stopwords.add('(')
-    stopwords.add(')')
-    stopwords.add('[')
-    stopwords.add(']')
-    stopwords.add("``")
-    stopwords.add("''")
-    stopwords.add(",")
-    stopwords.add("'s")
-    stopwords.add("'")
-    stopwords.add('""')
-    stopwords.add("n't")
-    stopwords.add("'re")
+    #stopwords.add('(')
+    #stopwords.add(')')
+    #stopwords.add('[')
+    #stopwords.add(']')
+    #stopwords.add("``")
+    #stopwords.add("''")
+    #stopwords.add(",")
+    #stopwords.add("'s")
+    #stopwords.add("'")
+    #stopwords.add('""')
+    #stopwords.add("n't")
+    #stopwords.add("'re")
 
     #tokenized_word = word_tokenize(str(all_text))
     #print(tokenized_word)
@@ -91,7 +91,7 @@ def main():
     #top10
     #top_10 = fdist.most_common(10)
 
-    return  str(stopwords)
+    return  all_text_json
     # Generate a word cloud image
     #wordcloud = WordCloud(stopwords=stopwords, background_color="white").generate(text)
 
