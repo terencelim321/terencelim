@@ -53,9 +53,9 @@ def main():
         text = video_text.query.filter_by(id=float(i)).first()
         text = text.full_text
         all_text += ' ' + text
-
-    #all_text_json = json.loads(all_text)
-    return all_text
+        
+    all_text_json = json.dumps(all_text)
+    return all_text_json
     #stopwords = set(stopwords.words('english'))
     # Create stopword list:
     #sets all stop words
