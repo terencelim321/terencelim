@@ -34,27 +34,27 @@ class video_text(db.Model):
         self.endtime = endtime
 
     
-@app.route('/')
+@app.route('/',methods = ['POST', 'GET'])
 def main():
 
-    return ('hello')
-    #from nltk.corpus import stopwords
-    #string_of_ids = ''
-    #if request.method == 'POST':
-      #string_of_ids = request.form['seg_ids']
-      
-    #else:
-      #string_of_ids = request.args.get('seg_ids')
-
-    #string_of_ids = string_of_ids.replace(',', '')
     
-    #all_text = ''
-    #for i in string_of_ids:
-        #text = video_text.query.filter_by(id=float(i)).first()
-        #text = text.full_text
-        #all_text += ' ' + text
+    
+    string_of_ids = ''
+    if request.method == 'POST':
+      string_of_ids = request.form['seg_ids']
+      
+    else:
+      string_of_ids = request.args.get('seg_ids')
 
+    string_of_ids = string_of_ids.replace(',', '')
+    
+    all_text = ''
+    for i in string_of_ids:
+        text = video_text.query.filter_by(id=float(i)).first()
+        text = text.full_text
+        all_text += ' ' + text
 
+    return string_of_ids
     #stopwords = set(stopwords.words('english'))
     # Create stopword list:
     #sets all stop words
