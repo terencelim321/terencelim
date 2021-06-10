@@ -106,7 +106,7 @@ def main():
     #top10
     #top_10 = fdist.most_common(10)
 
-    return  str(stopwords) 
+    return  str(stop_words) 
     # Generate a word cloud image
     #wordcloud = WordCloud(stopwords=stopwords, background_color="white").generate(text)
 
