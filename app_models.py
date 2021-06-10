@@ -4,9 +4,9 @@ from flask_sqlalchemy import SQLAlchemy
 #from flask_cors import CORS
 #import os 
 #from app_routes import app as app
+from app import app
 
-
-db = SQLAlchemy()
+db = SQLAlchemy(app)
 
 class video_text(db.Model):
     __tablename__ = 'video_text'
