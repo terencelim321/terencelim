@@ -10,10 +10,10 @@ import json
 
 app = Flask(__name__)
 #dev database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root@localhost:3306/bigdatavideo'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root@localhost:3306/bigdatavideo'
 #app.config['SQLALCHEMY_DATABASE_URI'] = environ.get("dbURL")
 #production database
-#app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 CORS(app)
 
@@ -75,22 +75,21 @@ def main():
      "should've", 'now', 'd', 'll', 'm', 'o', 're', 've', 'y', 'ain', 'aren', "aren't", 'couldn', "couldn't", 
      'didn', "didn't", 'doesn', "doesn't", 'hadn', "hadn't", 'hasn', "hasn't", 'haven', "haven't", 'isn', 
      "isn't", 'ma', 'mightn', "mightn't", 'mustn', "mustn't", 'needn', "needn't", 'shan', "shan't", 'shouldn',
-      "shouldn't", 'wasn', "wasn't", 'weren', "weren't", 'won', "won't", 'wouldn', "wouldn't", '(', ')', 
-      '[',']', "``", "''", "," ,"'s", "'", '""', "n't", "'re"]
+      "shouldn't", 'wasn', "wasn't", 'weren', "weren't", 'won', "won't", 'wouldn', "wouldn't"]
     # Create stopword list:
     #sets all stop words
-    #stopwords.append('(')
-    #stopwords.append(')')
-    #stopwords.append('[')
-    #stopwords.append(']')
-    #stopwords.append("``")
-    #stopwords.append("''")
-    #stopwords.append(",")
-    #stopwords.append("'s")
-    #stopwords.append("'")
-    #stopwords.append('""')
-    #stopwords.append("n't")
-    #stopwords.append("'re")
+    stopwords.append('(')
+    stopwords.append(')')
+    stopwords.append('[')
+    stopwords.append(']')
+    stopwords.append("``")
+    stopwords.append("''")
+    stopwords.append(",")
+    stopwords.append("'s")
+    stopwords.append("'")
+    stopwords.append('""')
+    stopwords.append("n't")
+    stopwords.append("'re")
 
     #tokenized_word = word_tokenize(str(all_text))
     #print(tokenized_word)
