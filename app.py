@@ -77,7 +77,7 @@ def main():
     # "isn't", 'ma', 'mightn', "mightn't", 'mustn', "mustn't", 'needn', "needn't", 'shan', "shan't", 'shouldn',
     #  "shouldn't", 'wasn', "wasn't", 'weren', "weren't", 'won', "won't", 'wouldn', "wouldn't"]
     # Create stopword list:
-    stop_words=stopwords.words("english")
+    stopwords=stopwords.words("english")
     #sets all stop words
     stopwords.add('(')
     stopwords.add(')')
@@ -98,7 +98,7 @@ def main():
     #checks the text and filters out all the stop words inside
     filtered_sent=[]
     for w in tokenized_word:
-        if w not in stop_words:
+        if w not in stopwords:
             filtered_sent.append(w)
 
     
@@ -106,7 +106,7 @@ def main():
     #top10
     #top_10 = fdist.most_common(10)
 
-    return  str(stop_words) 
+    return  str(stopwords) 
     # Generate a word cloud image
     #wordcloud = WordCloud(stopwords=stopwords, background_color="white").generate(text)
 
