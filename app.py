@@ -41,7 +41,7 @@ class video_text(db.Model):
 @app.route('/',methods = ['POST', 'GET'])
 def main():
     
-    
+    from nltk.corpus import stopwords
     
     
     string_of_ids = ''
@@ -77,7 +77,7 @@ def main():
     # "isn't", 'ma', 'mightn', "mightn't", 'mustn', "mustn't", 'needn', "needn't", 'shan', "shan't", 'shouldn',
     #  "shouldn't", 'wasn', "wasn't", 'weren', "weren't", 'won', "won't", 'wouldn', "wouldn't"]
     # Create stopword list:
-    stopwords=stopwords.words("english")
+    stopwords= stopwords.words("english")
     #sets all stop words
     stopwords.add('(')
     stopwords.add(')')
