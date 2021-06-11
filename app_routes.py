@@ -59,7 +59,7 @@ def main():
     
     fdist = FreqDist(filtered_sent)
     #top10
-    top_10 = fdist.most_common(10)
+    top_10 = fdist.most_common(11)
 
 
     freq_json = jsonify(top_10)
