@@ -1,20 +1,15 @@
-#import datetime
-#from flask import Flask, request, jsonify, json, render_template
 from flask_sqlalchemy import SQLAlchemy
-#from flask_cors import CORS
-#import os 
-#from app_routes import app as app
 from app import app
 
 db = SQLAlchemy(app)
 
 class video_text(db.Model):
-    __tablename__ = 'video_text'
+    __tablename__ = 'hw_video_text'
 
     id = db.Column(db.Integer, primary_key=True)
     video_id = db.Column(db.Integer, nullable=False)
     segment_number = db.Column(db.Integer, nullable=False)
-    full_text = db.Column(db.String(2000), nullable=False)
+    full_text = db.Column(db.Text, nullable=False)
     starttime = db.Column(db.Time , nullable=False)
     endtime = db.Column(db.Time , nullable=False)
 
