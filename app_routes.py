@@ -53,7 +53,7 @@ def main():
     #checks the text and filters out all the stop words inside
     filtered_sent=[]
     for w in tokenized_word:
-        if w not in stopwords:
+        if w.lower() not in stopwords:
             filtered_sent.append(w)
 
     
