@@ -7,7 +7,7 @@ import os
 
 app = Flask(__name__)
 #dev database
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root@localhost:3306/bigdatavideo'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root@localhost:3306/video'
 #app.config['SQLALCHEMY_DATABASE_URI'] = environ.get("dbURL")
 #production database
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
